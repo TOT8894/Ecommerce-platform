@@ -1,0 +1,23 @@
+import express from "express";
+import mongodb from "./config/mongodb.js";
+import dotenv from "dotenv";
+import productsRoute from "./routes/productsRoute.js";
+import cartRoute from "./routes/cartRoute.js";
+import ordersRoute from "./routes/ordersRoute.js";
+import authRoute from "./routes/authRoute.js";
+import userRoute from "./routes/userRoute.js";
+import cookieParser from "cookie-parser";
+import { errorHandler } from "./errorHandler/errorHandler.js";
+dotenv.config();
+mongodb();
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
+app.use("/api/v1/products", productsRoute);
+app.use("/api/v1/cart", cartRoute);
+app.use("/api/v1/orders", ordersRoute);
+app.use("/api/v1/user", userRoute);
+app.use("/api/v1/auth", authRoute);
+app.use(errorHandler);
+
+export default app;
