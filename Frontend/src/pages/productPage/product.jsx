@@ -1,5 +1,4 @@
-import react from "react";
-import axios from "axios"
+import react, { use } from "react";
 import {useState,useEffect} from "react-dom"
 export function Product(){
     const[product,setProduct]=useState({
@@ -10,6 +9,8 @@ export function Product(){
         image:"",
         stock:0
     });
+    const [message,setMessage]=useState("")
+    const [error,setError]=useState("")
     useEffect(()=>{
         fetch("http://localhost:5000/api/v1/products",{
             methode:"POST",
@@ -17,6 +18,13 @@ export function Product(){
                 "content-type":"application/json"
             },
             body:product
+        }).then((res)=>{
+            return res.json()
+        }).then((message,productSavedData)=>{
+            setMessage(message);
+            setProduct(productSavedData);
+        }).catch((error)=>{
+            setError(error)
         })
     },[product])
 
@@ -68,6 +76,8 @@ export function Product(){
                 onChange={e=>setProduct(e.target.value)}
             />
             <button onClick={handler}>add</button>
+            <p>{message} </p>
+            <p>{error} </p>
         </>
     )
 }
