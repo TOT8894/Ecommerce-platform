@@ -20,9 +20,9 @@ export function Product(){
             body:product
         }).then((res)=>{
             return res.json()
-        }).then((message,productSavedData)=>{
+        }).then((message,data)=>{
             setMessage(message);
-            setProduct(productSavedData);
+            setProduct(data);
         }).catch((error)=>{
             setError(error)
         })
