@@ -1,6 +1,6 @@
 import react from "react";
 import {useState,useEffect} from "react-dom"
-export function Product(){
+export function Order(){
     const[order,setOrder]=useState({
         items:{
             product:"",
