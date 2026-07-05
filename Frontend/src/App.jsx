@@ -1,5 +1,6 @@
 
 import './App.css'
+import { Order } from './pages/orderPage/order'
 import { Product } from './pages/productPage/product'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <>
         <Product/>
+        <Order/>
     </>
   )
 }
