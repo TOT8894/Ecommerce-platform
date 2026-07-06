@@ -1,6 +1,6 @@
 import react, { use } from "react";
 import "./product.css"
-import {useState,useEffect} from "react-dom"
+import {useState,useEffect} from "react"
 export function Product(){
     const[product,setProduct]=useState({
         name:"",
