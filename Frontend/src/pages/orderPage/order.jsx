@@ -34,25 +34,35 @@ export function Order(){
         e.preventDefault();
     }
     return(
-        <>
-            <input 
-                type="text" 
-                name="customerName" 
-                id=""
-                value={order.customerName}
-                onChange={e=>setOrder(e.target.value)}
-             />
-            <input 
-                type="text" 
-                name="customerAddress"
-                id="" 
-                value={order.customerAddress}
-                onChange={e=>setOrder(e.target.value)}
-             />
+        <div className="order">
+            <div className="order-input">
+                <input 
+                    type="text" 
+                    name="customerName" 
+                    id=""
+                    value={order.customerName}
+                    onChange={e=>setOrder(e.target.value)}
+                />
+            </div>
+            <div className="order-input">
+                <input 
+                    type="text" 
+                    name="customerAddress"
+                    id="" 
+                    value={order.customerAddress}
+                    onChange={e=>setOrder(e.target.value)}
+                /> 
+            </div>
 
-            <button onClick={handler}>order</button>
-            <p>{message}</p>
-            <p>{error}</p>
-        </>
+            <div className="order-button">
+                <button onClick={handler}>
+                    place your order
+                </button>
+            </div>
+            <div className="order-message">
+                <p className="message">{message}</p>
+                <p className="error">{error}</p>
+            </div>
+        </div>
     )
 }
