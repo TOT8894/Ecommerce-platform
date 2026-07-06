@@ -32,52 +32,70 @@ export function Product(){
         e.preventDefault();
     }
     return(
-        <>
-            <input 
+        <div className="product">
+            <div className="product-input">
+                <input 
                 type="text" 
                 name="name" 
                 id=""
                 value={product.name}
                 onChange={e=>setProduct(e.target.value)}
              />
-            <input 
-                type="Number" 
-                name="price" 
-                id="" 
-                value={product.price}
-                onChange={e=>setProduct(e.target.value)}
-             />
-            <input 
-                type="text" 
-                name="description"
-                id="" 
-                value={product.description}
-                onChange={e=>setProduct(e.target.value)}
-             />
-            <input 
-                type="text" 
-                name="category" 
-                id="" 
-                value={product.category}
-                onChange={e=>setProduct(e.target.value)}
-            />
-            <input 
-                type="image" 
-                name="image"
-                id=""  
-                value={product.image}
-                onChange={e=>setProduct(e.target.value)}
-            />
-            <input 
-                type="Number" 
-                name="stock"
-                id="" 
-                value={product.stock}
-                onChange={e=>setProduct(e.target.value)}
-            />
-            <button onClick={handler}>add</button>
-            <p>{message} </p>
-            <p>{error} </p>
-        </>
+            </div>
+            <div className="product-input">
+                <input 
+                    type="Number" 
+                    name="price" 
+                    id="" 
+                    value={product.price}
+                    onChange={e=>setProduct(e.target.value)}
+                />
+            </div>
+            <div className="product-input">
+                <input 
+                    type="text" 
+                    name="description"
+                    id="" 
+                    value={product.description}
+                    onChange={e=>setProduct(e.target.value)}
+                />
+            </div> 
+            <div className="product-input">
+                <input 
+                    type="text" 
+                    name="category" 
+                    id="" 
+                    value={product.category}
+                    onChange={e=>setProduct(e.target.value)}
+                />
+            </div>
+            <div className="product-input">
+                <input 
+                    type="image" 
+                    name="image"
+                    id=""  
+                    value={product.image}
+                    onChange={e=>setProduct(e.target.value)}
+                />
+            </div>
+            <div className="product-input">
+                <input 
+                    type="Number" 
+                    name="stock"
+                    id="" 
+                    value={product.stock}
+                    onChange={e=>setProduct(e.target.value)}
+                />
+            </div>
+            <div className="product-button">
+                <button onClick={handler}>
+                    add
+                </button>
+            </div>
+            <div className="product-message">
+                <p>{message} </p>
+                <p>{error} </p>
+            </div>
+        </div>
     )
 }
