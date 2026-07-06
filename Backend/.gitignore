@@ -2,7 +2,7 @@
 .env
 # Node modules (never commit these)
 node_modules/
-
+.env.example
 # Logs
 logs/
 *.log
