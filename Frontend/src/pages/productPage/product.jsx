@@ -1,4 +1,5 @@
 import react, { use } from "react";
+import "./product.css"
 import {useState,useEffect} from "react-dom"
 export function Product(){
     const[product,setProduct]=useState({
