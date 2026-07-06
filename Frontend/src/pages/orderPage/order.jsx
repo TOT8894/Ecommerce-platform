@@ -1,5 +1,6 @@
 import react from "react";
-import {useState,useEffect} from "react-dom"
+import "./order.css"
+import {useState,useEffect} from "react"
 export function Order(){
     const[order,setOrder]=useState({
         items:{
