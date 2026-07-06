@@ -93,8 +93,8 @@ export function Product(){
                 </button>
             </div>
             <div className="product-message">
-                <p>{message} </p>
-                <p>{error} </p>
+                <p className="message">{message} </p>
+                <p className="error">{error} </p>
             </div>
         </div>
     )
