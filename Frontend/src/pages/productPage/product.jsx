@@ -94,8 +94,14 @@ export function Product(){
                 </button>
             </div>
             <div className="product-message">
-                <p className="message">{message} </p>
-                <p className="error">{error} </p>
+               {message&& <p className="message">
+                                {message} 
+                          </p>
+                }
+                {error&& <p className="error">
+                            {error} 
+                         </p>
+                }               
             </div>
         </div>
     )
