@@ -5,9 +5,12 @@
     align-items: center;
     border:2px solid rgb(212, 196, 196);
     box-shadow: 5px 5px 10px gray;
-    width: 200px;
-    height: 200px;
+    width: 100%px;
+    height: mvh;
     position: relative;
+}
+.product-input{
+    width:70%;
 }
 .product-input input{
     width: 70%;
