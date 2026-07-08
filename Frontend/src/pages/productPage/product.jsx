@@ -1,4 +1,4 @@
-import react, { use } from "react";
+import react from "react";
 import "./product.css"
 import {useState,useEffect} from "react"
 export function Product(){
@@ -12,97 +12,103 @@ export function Product(){
     });
     const [message,setMessage]=useState("")
     const [error,setError]=useState("")
-    useEffect(()=>{
-        fetch("http://localhost:5000/api/v1/products",{
-            methode:"POST",
+    function onchange(e){
+        const {name,value} = e.target;
+        setProduct({
+            ...product,[name]:value
+        })
+    }
+    async function handleSubmit(e){
+        e.preventDefault();
+        await fetch("http://localhost:5000/api/v1/products",{
+            method:"POST",
             headers:{
                 "content-type":"application/json"
             },
-            body:product
+            body:JSON.stringify(product)
         }).then((res)=>{
             return res.json()
-        }).then((message,data)=>{
-            setMessage(message);
-            setProduct(data);
+        }).then((data)=>{
+            setMessage(data.message);
+            setProduct(data.data);
         }).catch((error)=>{
             setError(error)
         })
-    },[product])
+}
 
-    function handler(e){
-        e.preventDefault();
-    }
     return(
         <div className="product">
-            <div className="product-input">
-                <input 
-                type="text" 
-                name="name" 
-                id=""
-                value={product.name}
-                onChange={e=>setProduct(e.target.value)}
-             />
-            </div>
-            <div className="product-input">
-                <input 
-                    type="Number" 
-                    name="price" 
-                    id="" 
-                    value={product.price}
-                    onChange={e=>setProduct(e.target.value)}
-                />
-            </div>
-            <div className="product-input">
-                <input 
+           <form onSubmit={handleSubmit} className="product-form">
+                <div className="product-input">
+                    <input 
                     type="text" 
-                    name="description"
-                    id="" 
-                    value={product.description}
-                    onChange={e=>setProduct(e.target.value)}
+                    name="name" 
+                    id=""
+                    value={product.name}
+                    onChange={onchange}
                 />
-            </div> 
-            <div className="product-input">
-                <input 
-                    type="text" 
-                    name="category" 
-                    id="" 
-                    value={product.category}
-                    onChange={e=>setProduct(e.target.value)}
-                />
-            </div>
-            <div className="product-input">
-                <input 
-                    type="image" 
-                    name="image"
-                    id=""  
-                    value={product.image}
-                    onChange={e=>setProduct(e.target.value)}
-                />
-            </div>
-            <div className="product-input">
-                <input 
-                    type="Number" 
-                    name="stock"
-                    id="" 
-                    value={product.stock}
-                    onChange={e=>setProduct(e.target.value)}
-                />
-            </div>
-            <div className="product-button">
-                <button onClick={handler}>
-                    add
-                </button>
-            </div>
-            <div className="product-message">
-               {message&& <p className="message">
-                                {message} 
-                          </p>
-                }
-                {error&& <p className="error">
-                            {error} 
-                         </p>
-                }               
-            </div>
+                </div>
+                <div className="product-input">
+                    <input 
+                        type="number" 
+                        name="price" 
+                        id="" 
+                        value={product.price}
+                        onChange={onchange}
+                    />
+                </div>
+                <div className="product-input">
+                    <input 
+                        type="text" 
+                        name="description"
+                        id="" 
+                        value={product.description}
+                        onChange={onchange}
+                    />
+                </div> 
+                <div className="product-input">
+                    <input 
+                        type="text" 
+                        name="category" 
+                        id="" 
+                        value={product.category}
+                        onChange={onchange}
+                    />
+                </div>
+                <div className="product-input">
+                    <input 
+                        type="text" 
+                        name="image"
+                        id=""  
+                        value={product.image}
+                        onChange={onchange}
+                    />
+                </div>
+                <div className="product-input">
+                    <input 
+                        type="number" 
+                        name="stock"
+                        id="" 
+                        value={product.stock}
+                        onChange={onchange}
+                    />
+                </div>
+                <div className="product-button">
+                    <button>
+                        add
+                    </button>
+                </div>
+                <div className="product-message">
+                {message&& <p className="message">
+                                {message}
+                            </p>
+                    }
+                    {error&& <p className="error">
+                                {error}
+                            </p>
+                    }               
+                </div>
+           </form>
         </div>
     )
 }
