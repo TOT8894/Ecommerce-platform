@@ -14,29 +14,28 @@ export function Order(){
     const[error,setError]=useState("")
     const[message,setMessage]=useState("")
     
-    useEffect(()=>{
-        fetch("http://localhost:5000/api/v1/orders",{
-            methode:"POST",
-            headers:{
-                "content-type":"application/json"
-            },
-            body:order
+     async function handleSubmit(e){ 
+        e.preventDefault();
+        await  fetch("http://localhost:5000/api/v1/orders",{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(order)
         }).then((res)=>{
             return res.json();
-        }).then((message,order)=>{
-            setOrder(order);
-            setMessage(message);
+        }).then((data)=>{
+            setOrder(data.data);
+            setMessage(data.message);
         }).catch((error)=>{
             setError(error)
         })
-    },[order])
-
-    function handler(e){
-        e.preventDefault();
     }
+
     return(
         <div className="order">
-            <div className="order-input">
+           <form onSubmit={handleSubmit} className="order-form">
+                 <div className="order-input">
                 <input 
                     type="text" 
                     name="customerName" 
@@ -56,14 +55,15 @@ export function Order(){
             </div>
 
             <div className="order-button">
-                <button onClick={handler}>
+                <button >
                     place your order
                 </button>
             </div>
             <div className="order-message">
-                <p className="message">{message}</p>
-                <p className="error">{error}</p>
+               {message && <p className="message">{message}</p>}
+                {error && <p className="error">{error}</p>}
             </div>
+           </form> 
         </div>
     )
 }
