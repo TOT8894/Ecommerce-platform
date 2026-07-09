@@ -1,7 +1,7 @@
 const ACCESS_KEY="accessToken"
 const REFRESH_KEY="refreshToken"
 
-const Base_url=(import.meta.env.VITE_BASE_URL || "").replace(/\/$/,"")
+export const Base_url=(import.meta.env.VITE_BASE_URL || "").replace(/\/$/,"")
 
 export class ApiError extends Error{
     constructor(message,error){
