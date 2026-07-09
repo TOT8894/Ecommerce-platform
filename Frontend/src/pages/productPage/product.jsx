@@ -10,8 +10,9 @@ export function Product(){
         image:"",
         stock:0
     });
-    const [message,setMessage]=useState("")
-    const [error,setError]=useState("")
+    const [message,setMessage] = useState("")
+    const [error,setError] = useState("")
+    const [loading,setLoading] = useState(false)
     function onchange(e){
         const {name,value} = e.target;
         setProduct({
@@ -20,6 +21,9 @@ export function Product(){
     }
     async function handleSubmit(e){
         e.preventDefault();
+        setLoading(true);
+        setError(false)
+
         await fetch("http://localhost:5000/api/v1/products",{
             method:"POST",
             headers:{
@@ -33,6 +37,8 @@ export function Product(){
             setProduct(data.data);
         }).catch((error)=>{
             setError(error)
+        }).finally(()=>{
+            setLoading(false)
         })
 }
 
@@ -95,7 +101,7 @@ export function Product(){
                 </div>
                 <div className="product-button">
                     <button>
-                        add
+                        {loading?"adding":"add"}
                     </button>
                 </div>
                 <div className="product-message">
