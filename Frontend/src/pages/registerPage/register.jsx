@@ -14,7 +14,7 @@ export function Register(){
     const [message,setMessage] = useState("")
     const [loading,setLoading] = useState("")
     const [error,setError] = useState("")
-    
+
     function onchange(e){
         const {name,value}=e.target;
         setCredentials({
@@ -97,7 +97,7 @@ export function Register(){
                 </select>
                 <div className="register-button">
                     <button>
-                       { loading?"credentialsing":"credentials"}
+                       { loading?"loading":"register"}
                     </button>
                 </div>
                 <div className="register-message">
