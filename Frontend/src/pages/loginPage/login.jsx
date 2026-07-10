@@ -27,8 +27,8 @@ export function Login(){
             const response = await Login(credentials) 
             const result = await response.json()
             setMessage(result.message)
-        }catch(err){
-            setError(err)
+        }catch(error){
+            setError(error.message)
         }finally{
             setLoading(false)
         }
@@ -41,6 +41,7 @@ export function Login(){
                         type="email" 
                         name="email" 
                         id="" 
+                        placeholder="Enter email"
                         value={credentials.email}
                         onChange={onchange}
                     />
@@ -50,6 +51,7 @@ export function Login(){
                         type="password" 
                         name="password"
                         id="" 
+                        placeholder="***********"
                         value={credentials.password}
                         onChange={onchange}
                     />
