@@ -22,7 +22,7 @@ export function Product(){
     async function handleSubmit(e){
         e.preventDefault();
         setLoading(true);
-        setError(false)
+        setError("")
 
         await fetch("http://localhost:5000/api/v1/products",{
             method:"POST",
@@ -36,7 +36,7 @@ export function Product(){
             setMessage(data.message);
             setProduct(data.data);
         }).catch((error)=>{
-            setError(error)
+            setError(error.message)
         }).finally(()=>{
             setLoading(false)
         })
@@ -50,6 +50,7 @@ export function Product(){
                     type="text" 
                     name="name" 
                     id=""
+                    placeholder="Enter product"
                     value={product.name}
                     onChange={onchange}
                 />
@@ -59,6 +60,7 @@ export function Product(){
                         type="number" 
                         name="price" 
                         id="" 
+                        placeholder="Enter the price"
                         value={product.price}
                         onChange={onchange}
                     />
@@ -68,6 +70,7 @@ export function Product(){
                         type="text" 
                         name="description"
                         id="" 
+                        placeholder="Enter description"
                         value={product.description}
                         onChange={onchange}
                     />
@@ -77,6 +80,7 @@ export function Product(){
                         type="text" 
                         name="category" 
                         id="" 
+                        placeholder="Enter category"
                         value={product.category}
                         onChange={onchange}
                     />
@@ -86,6 +90,7 @@ export function Product(){
                         type="text" 
                         name="image"
                         id=""  
+                        placeholder="Enter image url"
                         value={product.image}
                         onChange={onchange}
                     />
@@ -95,6 +100,7 @@ export function Product(){
                         type="number" 
                         name="stock"
                         id="" 
+                        placeholder="Enter number of stock"
                         value={product.stock}
                         onChange={onchange}
                     />
@@ -105,7 +111,7 @@ export function Product(){
                     </button>
                 </div>
                 <div className="product-message">
-                {message&& <p className="message">
+                    {message&& <p className="message">
                                 {message}
                             </p>
                     }
