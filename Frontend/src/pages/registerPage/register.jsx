@@ -30,8 +30,8 @@ export function Register(){
             const response = await Register(credentials) 
             const result = await response.json()
             setMessage(result.message)
-        }catch(err){
-            setError(err)
+        }catch(error){
+            setError(error.message)
         }finally{
             setLoading(false)
         }
@@ -44,6 +44,7 @@ export function Register(){
                     type="text" 
                     name="name" 
                     id=""
+                    placeholder="Enter full name"
                     value={credentials.name}
                     onChange={onchange}
                 />
@@ -53,6 +54,7 @@ export function Register(){
                         type="email" 
                         name="email" 
                         id="" 
+                        placeholder="Enter email"
                         value={credentials.email}
                         onChange={onchange}
                     />
@@ -62,6 +64,7 @@ export function Register(){
                         type="password" 
                         name="password"
                         id="" 
+                        placeholder="********"
                         value={credentials.password}
                         onChange={onchange}
                     />
@@ -71,17 +74,23 @@ export function Register(){
                         type="text" 
                         name="phone" 
                         id="" 
+                        placeholder="09/07********"
                         value={credentials.phone}
                         onChange={onchange}
                     />
                 </div>
-                <select className="register-input">
+                <select className="register-input"
+                    type="text" 
+                    name="role"
+                    id=""  
+                    value={credentials.role}
+                    onChange={onchange}
+                >
                     <option 
                         type="text" 
                         name="role"
                         id=""  
-                        value={credentials.role}
-                        onChange={onchange}
+                        value="seller"
                     >
                         seller
                     </option>
@@ -89,8 +98,7 @@ export function Register(){
                         type="text" 
                         name="role"
                         id=""  
-                        value={credentials.role}
-                        onChange={onchange}
+                        value="buyer"
                     >
                         buyer
                     </option>
