@@ -1,44 +1,51 @@
-.order{
+.order-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border:2px solid rgb(212, 196, 196);
-    box-shadow: 5px 5px 10px gray;
-    width: 200px;
-    height: 200px;
+    border:2px solid rgb(234, 16, 16);
+    padding: 40px 20px;
+    width: 100%; 
     position: relative;
 }
+.order-input {
+    width: 400px;
+    margin-top: 10px;
+
+}
 .order-input input{
-    width: 70%;
+    width: 377px;
+    border:2px solid rgb(6, 255, 43);
     padding: 5px 10px;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 20px;
-    border:2px solid rgb(11, 6, 6);
+    border-radius: 5px;
+    background-color: rgb(203, 211, 204);
+
+}
+.order-button{
+    width: 400px;
+    text-align: center;
+    margin-top: 25px;
 
 }
 .order-button button{
-    width: 70%;
+    width: 60%;
     padding: 5px 10px;
-    font-size: 20px;
+    font-size: 25px;
     color: rgb(14, 127, 227);
     background-color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 20px;
+    font-weight: bold;
     border:2px solid rgb(11, 6, 6);
     cursor: pointer;
     opacity: 0.8;
-    border-radius: 5px;
+    border-radius: 30px;
     box-shadow: 5px 5px 10px gray;
 
 }
-.order-button button:hover{
-    color: rgb(200, 3, 255);
-    background-color: rgb(2, 255, 200);
-    transform: scale(1.02);
-    opacity: 0.5;
-}
+
 .order-button button:hover{
     color: rgb(206, 203, 226);
     background-color: rgb(54, 54, 240);
@@ -48,7 +55,7 @@
 }
 .order-message{
     display:flex;
-    width: 100%;
+    width: 400px;
     margin:5px;
     padding: 5px 10px;
 }
@@ -65,5 +72,5 @@
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 20px;
     font-size: 20px;
-
+    flex: 1;
 }
