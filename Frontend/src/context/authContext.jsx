@@ -9,7 +9,7 @@ export function AuthProvider({children}){
     const [accessToken,setAccessToken] = useState(()=>GetAccessToken())
     const [error,setError] = useState("")
 
-    const  Register = useCallback((credentials)=>{
+    const  Register = useCallback( async(credentials)=>{
         setError("")
         setLoading(true)
 
@@ -20,14 +20,14 @@ export function AuthProvider({children}){
             setUser(data)
             StoreToken(result)
             return result
-        } catch(err){
-            setError(error)
+        } catch(error){
+            setError(error.message)
         } finally{
             setLoading(false)
         }
     },[])
 
-    const  Login = useCallback((credentials)=>{
+    const  Login = useCallback(async(credentials)=>{
         setError("")
         setLoading(true)
         
@@ -38,19 +38,19 @@ export function AuthProvider({children}){
             setUser(data)
             StoreToken(result)
             return result
-        } catch(err){
-            setError(error)
+        } catch(error){
+            setError(error.message)
         } finally{
             setLoading(false)
         } 
     },[])
 
-    const  LogOut = useCallback(()=>{
+    const  LogOut = useCallback( async()=>{
         await AuthApi.logout();
         ClearToken();
     },[])
 
-    const  Profile = useCallback(()=>{
+    const  Profile = useCallback(async()=>{
         setError("")
         setLoading(true)
         
@@ -60,8 +60,8 @@ export function AuthProvider({children}){
             const data = result?.data??result.user; 
             setUser(data)
             return result
-        } catch(err){
-            setError(error)
+        } catch(error){
+            setError(error.message)
         } finally{
             setLoading(false)
         }
