@@ -13,6 +13,7 @@ export function Order(){
     });
     const[error,setError]=useState("")
     const[message,setMessage]=useState("")
+    const[loading,setLoading]=useState(false)
     function onchange(e){
         const{name,value} = e.target;
         setOrder({
@@ -21,6 +22,8 @@ export function Order(){
     }
      async function handleSubmit(e){ 
         e.preventDefault();
+        setError("")
+        setLoading(true)
         fetch("http://localhost:5000/api/v1/orders",{
                 method:"POST",
                 headers:{
@@ -33,7 +36,9 @@ export function Order(){
             setOrder(data.data);
             setMessage(data.message);
         }).catch((error)=>{
-            setError(error)
+            setError(error.message)
+        }).finally(()=>{
+            setLoading(false)
         })
     }
 
@@ -45,6 +50,7 @@ export function Order(){
                         type="text" 
                         name="customerName" 
                         id=""
+                        placeholder="Enter customer name"
                         value={order.customerName}
                         onChange={onchange}
                     />
@@ -54,6 +60,7 @@ export function Order(){
                         type="text" 
                         name="customerAddress"
                         id="" 
+                        placeholder="Enter customer address"
                         value={order.customerAddress}
                         onChange={onchange}
                     /> 
@@ -61,7 +68,7 @@ export function Order(){
 
                 <div className="order-button">
                     <button >
-                        place your order
+                       {loading?"ordering":"place your order"} 
                     </button>
                 </div>
                 <div className="order-message">
