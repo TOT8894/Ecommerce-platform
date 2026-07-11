@@ -61,3 +61,22 @@ const AuthApi={
         method:"POST"
     }),
 }
+const ListingApi={
+    createListing:(credential)=>ApiRequest(`${base_url}/api/v1/listing/add`,{
+        method:"POST",
+        data:credential
+    }),
+    updateListing:(credential)=>ApiRequest(`${base_url}/api/v1/listing/update`,{
+        method:"POST",
+        data:credential
+    }),
+    getListing:()=>ApiRequest(`${base_url}/api/v1/listing/get`,{
+        method:"GET"
+    }),
+    getListingById:(id)=>ApiRequest(`${base_url}/api/v1/listing/:id`,{
+        method:"GET"
+    }),
+    deleteListing:()=>ApiRequest(`${base_url}/api/v1/listing/delete`,{
+        method:"POST"
+    }),
+        }
