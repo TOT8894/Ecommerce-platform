@@ -10,13 +10,13 @@ function App() {
   
 
   return (
-    <>  
+    <div className="app-component">  
       <Header/>
       <Register/>
       <Login/>
       <Product/>
       <Order/>
-    </>
+    </div>
   )
 }
 
