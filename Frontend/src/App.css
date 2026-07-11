@@ -1,0 +1,10 @@
+.app-component{
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  width:100%;
+  height:mvh;
+  margin:0;
+  padding:10px 20px;
+  position:relative;
+}
