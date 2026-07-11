@@ -18,7 +18,7 @@ export function GetRefreshToken(){
 }
 export function SetAccessRefreshToken({accessToken,refreshToken}){
    if(accessToken){
-        localStorage.setItem(ACCESS_KEY,accessToken);
+        localStorage.setItem(ACCESS_KEY,accessToken); ho
     }
     if(refreshToken){
         localStorage.setItem(REFRESH_KEY,refreshToken)
@@ -76,7 +76,27 @@ const ListingApi={
     getListingById:(id)=>ApiRequest(`${base_url}/api/v1/listing/:id`,{
         method:"GET"
     }),
-    deleteListing:()=>ApiRequest(`${base_url}/api/v1/listing/delete`,{
+    deleteListing:(id)=>ApiRequest(`${base_url}/api/v1/listing/delete`,{
         method:"POST"
     }),
-        }
+}
+const OrderApi={
+    createOrder:(credential)=>ApiRequest(`${base_url}/api/v1/order/create`,{
+        method:"POST",
+        data:credential
+    }),
+    updateOrder:(credential)=>ApiRequest(`${base_url}/api/v1/order/update`,{
+        method:"POST",
+        data:credential
+    }),
+    getOrder:()=>ApiRequest(`${base_url}/api/v1/order/get`,{
+        method:"GET"
+    }),
+    getOrderById:(id)=>ApiRequest(`${base_url}/api/v1/order/:id`,{
+        method:"GET"
+    }),
+    deleteOrder:(id)=>ApiRequest(`${base_url}/api/v1/order/delete`,{
+        method:"POST"
+    }),
+}
+        
